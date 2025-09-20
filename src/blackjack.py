@@ -51,6 +51,11 @@ class DiscordBlackjack():
         
 
         return True
+
+    def get_balance(self, currency_id="01JS3QZ72ZBAZF8XW923M3TH9H"):
+        self.get_balances()
+        this_balance = [b for b in self.BALANCES if b.get("currency",{}).get("id") == currency_id][0]
+        return int(this_balance.get("amount"))
     
     def credit(self, amount, currency_id="01JS3QZ72ZBAZF8XW923M3TH9H"):
         url = "https://1300612940486934591.discordsays.com/.proxy/lootlocker/game/balances/credit"
